@@ -4,6 +4,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import pandas as pd
 import re
 import time
+from datetime import date
 
 print("Target Aquired")
 
@@ -43,6 +44,8 @@ for i in range(3, 224):
             row.append(d.find_element_by_xpath('/html/body/div[3]/div[3]/div/div[4]/div[1]/div/table/tbody[1]/tr[' + str(i) + ']/td[1]').text)
             row.append(d.find_element_by_xpath('/html/body/div[3]/div[3]/div/div[4]/div[1]/div/table/tbody[1]/tr[' + str(i) + ']/td[2]').text)
             for j in range(3, 20):
+                if j is 16:
+                    continue
                 rec = d.find_element_by_xpath('/html/body/div[3]/div[3]/div/div[4]/div[1]/div/table/tbody[1]/tr[' + str(i) + ']/td[' + str(j) + ']').text
                 if '+' in rec:
                     rec = rec.replace('+', '')
@@ -54,10 +57,13 @@ for i in range(3, 224):
                     rec = int(rec)
                 except Exception as e:
                     print(e)
-                    rec = float(rec)
+                    try:
+                        rec = float(rec)
+                    except Exception as e1:
+                        rec = -1
                     print("handled")
                 row.append(rec)
-            row[16] = d.find_element_by_xpath('/html/body/div[3]/div[3]/div/div[4]/div[1]/div/table/tbody[1]/tr[' + str(i) + ']/td[16]').get_attribute('data-continent')
+            row.append(d.find_element_by_xpath('/html/body/div[3]/div[3]/div/div[4]/div[1]/div/table/tbody[1]/tr[' + str(i) + ']/td[16]').get_attribute('data-continent'))
         
         if flag == 1:
             table.append(row)
@@ -72,7 +78,38 @@ print("\nCreating a dataframe.....\n")
 col = ["#", "Country", "Total Cases", "New Cases", "Total Deaths",
         "New Deaths", "Total Recovered", "New Recovered", "Active Cases", 
         "Serious Critical", "Tot Cases/ 1M pop", "Deaths/ 1M pop", "Total Tests",
-        "Tests/ 1M pop", "Population", "1 Cases every X ppl", "1 Death every X ppl", "1 test every X ppl", "Country"]
+        "Tests/ 1M pop", "Population", "1 Cases every X ppl", "1 Death every X ppl", "1 test every X ppl", "Continent"]
 
 world = pd.DataFrame(table, columns = col)
 print("\n WORLD created.\n")
+
+print("\n Downloading World. \n")
+world.to_csv("world.csv", index = False)
+
+# System date 
+today = date.today()
+print(today)
+
+# Month dictionary
+month = {
+    "January" : 1,
+    "February" : 2,
+    "March" : 3,
+    "April" : 4,
+    "May" : 5,
+    "June" : 6,
+    "July" : 7,
+    "August" : 8,
+    "September" : 9,
+    "October" : 10,
+    "November" : 11,
+    "December" : 12
+}
+
+date = d.find_element_by_xpath("/html/body/div[3]/div[2]/div[1]/div/div[2]").text
+date = re.findall(r"[:]+\s+[A-Za-z]+\s+\d+[,]+\s+\d*", date)[0]
+date = date.replace(': ', '')
+date = date.replace(',', '')
+date = date.split(" ")
+date[0] = month[date[0]]
+date = date[1] + '-' + str(date[0]) + '-'  + date[2]
