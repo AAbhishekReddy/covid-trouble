@@ -1,4 +1,7 @@
 @echo off
+
+cd E:\Code dump\covid\covid-trouble
+
 echo Donot close this cmd or the new web browser that is gonna pop up
 echo Summon GHOST if you are not sure about it.....GHOST
 
@@ -16,5 +19,7 @@ git commit -m "%date%"
 git push origin
 
 echo Git updated.
+
+echo %time%
 
 pause
