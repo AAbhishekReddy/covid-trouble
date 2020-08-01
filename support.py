@@ -1,34 +1,14 @@
-from selenium import webdriver as wb
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
-import pandas as pd
-import re
-import time
-# from datetime import date
-from tqdm import tqdm 
-
-# Calling user defined function.
-# from support import cook
-
-print("Target Aquired")
-
-d = wb.Chrome("support\chromedriver.exe")
-
-d.get("https://www.worldometers.info/coronavirus/")
-
-print("\nWe are in....\n\nWelcome GHOST\n")
+def disp:
+    print("here")
 
 # Click the accept cookies button
-def cook():
+def cook(d):
     try:
         d.find_element_by_xpath('/html/body/div[1]/div/a').click()
         d.find_element_by_xpath('/html/body/div[3]/div[3]/div/div[3]/ul/li[1]/a').click()    
     except Exception as e:
         print(e)
         print("Its out of the way.")
-
-# Click the cookie consent box.
-cook()
 
 # Columns drop down
 def col_check():
@@ -44,9 +24,6 @@ def col_check():
     except Exception as e:
         print("Not able to click")
         col_check()
-
-# Check the boxes in the column
-col_check()
 
 
 # Extracting the date from the website                  ??? Returning the date ???
@@ -77,9 +54,6 @@ def today():
     date = date[1] + '-' + str(date[0]) + '-'  + date[2]
 
     return date
-
-# Extract the date
-dat = today()
 
 # Extracting the values                             ??? Returning the table ???
 def extract(date):
@@ -133,36 +107,3 @@ def extract(date):
     loop.close()
 
     return table
-
-# Extracting the values
-table = extract(dat)
-
-print("\nDone.\n")
-
-end = time.time()
-
-print((end - start)/60)
-
-print("\nCreating a dataframe.....\n")
-# Data frame creation
-col = ["Date", "Country", "Total Cases", "New Cases", "Total Deaths",
-        "New Deaths", "Total Recovered", "New Recovered", "Active Cases", 
-        "Serious Critical", "Tot Cases/ 1M pop", "Deaths/ 1M pop", "Total Tests",
-        "Tests/ 1M pop", "Population", "1 Cases every X ppl", "1 Death every X ppl", "1 test every X ppl", "Continent"]
-
-
-
-world = pd.DataFrame(table, columns = col)
-
-old = pd.read_csv("data\world.csv")
-old = old.loc[:, ~old.columns.str.contains('^Unnamed')]
-
-world = old.append(world, ignore_index = True)
-
-print("\n WORLD created.\n")
-
-print("\n Downloading World. \n")
-world.to_csv("data\world.csv", index = False)
-print("\n Mission Acomplished......!!!")
-
-d.quit()
