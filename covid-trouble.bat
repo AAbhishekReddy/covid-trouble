@@ -38,6 +38,9 @@ git push origin
 
 echo                                            Git updated.
 echo.
+echo                                      ---  %Date%  ---  
+echo.
 echo                                       ---  %time%  ---  
+
 
 pause
