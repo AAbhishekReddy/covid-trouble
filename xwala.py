@@ -12,7 +12,7 @@ from tqdm import tqdm
 
 print("Target Aquired")
 
-d = wb.Chrome("support\chromedriver.exe")
+d = wb.Chrome("E:\Code dump\covid\covid-trouble\support\chromedriver.exe")
 
 d.get("https://www.worldometers.info/coronavirus/")
 
@@ -154,7 +154,7 @@ col = ["Date", "Country", "Total Cases", "New Cases", "Total Deaths",
 
 world = pd.DataFrame(table, columns = col)
 
-old = pd.read_csv("data\world.csv")
+old = pd.read_csv("E:\Code dump\covid\covid-trouble\data\world.csv")
 old = old.loc[:, ~old.columns.str.contains('^Unnamed')]
 
 world = old.append(world, ignore_index = True)
@@ -162,7 +162,7 @@ world = old.append(world, ignore_index = True)
 print("\n WORLD created.\n")
 
 print("\n Downloading World. \n")
-world.to_csv("data\world.csv", index = False)
+world.to_csv("E:\Code dump\covid\covid-trouble\data\world.csv", index = False)
 print("\n Mission Acomplished......!!!")
 
 d.quit()
