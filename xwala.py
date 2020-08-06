@@ -86,8 +86,6 @@ def extract(date):
     table = []
     flag = 0
 
-    start = time.time()
-
     # Scrapping the cells one by one.
 
     # Status bar
@@ -134,6 +132,8 @@ def extract(date):
 
     return table
 
+start = time.time()
+
 # Extracting the values
 table = extract(dat)
 
@@ -143,26 +143,26 @@ end = time.time()
 
 print((end - start)/60)
 
-# print("\nCreating a dataframe.....\n")
-# # Data frame creation
-# col = ["Date", "Country", "Total Cases", "New Cases", "Total Deaths",
-#         "New Deaths", "Total Recovered", "New Recovered", "Active Cases", 
-#         "Serious Critical", "Tot Cases/ 1M pop", "Deaths/ 1M pop", "Total Tests",
-#         "Tests/ 1M pop", "Population", "1 Cases every X ppl", "1 Death every X ppl", "1 test every X ppl", "Continent"]
+print("\nCreating a dataframe.....\n")
+# Data frame creation
+col = ["Date", "Country", "Total Cases", "New Cases", "Total Deaths",
+        "New Deaths", "Total Recovered", "New Recovered", "Active Cases", 
+        "Serious Critical", "Tot Cases/ 1M pop", "Deaths/ 1M pop", "Total Tests",
+        "Tests/ 1M pop", "Population", "1 Cases every X ppl", "1 Death every X ppl", "1 test every X ppl", "Continent"]
 
 
 
-# world = pd.DataFrame(table, columns = col)
+world = pd.DataFrame(table, columns = col)
 
-# old = pd.read_csv("E:\Code dump\covid\covid-trouble\data\world.csv")
-# old = old.loc[:, ~old.columns.str.contains('^Unnamed')]
+old = pd.read_csv("E:\Code dump\covid\covid-trouble\data\world.csv")
+old = old.loc[:, ~old.columns.str.contains('^Unnamed')]
 
-# world = old.append(world, ignore_index = True)
+world = old.append(world, ignore_index = True)
 
-# print("\n WORLD created.\n")
+print("\n WORLD created.\n")
 
-# print("\n Downloading World. \n")
-# world.to_csv("E:\Code dump\covid\covid-trouble\data\world.csv", index = False)
-# print("\n Mission Acomplished......!!!")
+print("\n Downloading World. \n")
+world.to_csv("E:\Code dump\covid\covid-trouble\data\world.csv", index = False)
+print("\n Mission Acomplished......!!!")
 
 d.quit()
