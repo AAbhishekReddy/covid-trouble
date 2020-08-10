@@ -13,3 +13,6 @@ fig = px.choropleth(df, locations="iso_alpha",
 fig.show()
 
 iso = pd.read_excel("data\iso_codes.xls")
+
+
+iso.head()
