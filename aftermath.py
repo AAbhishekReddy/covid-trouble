@@ -1,5 +1,8 @@
 import pandas as pd
 import plotly.express as px
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
 
 world = pd.read_csv("data\world.csv")
 
@@ -16,3 +19,11 @@ iso = pd.read_excel("data\iso_codes.xls")
 
 
 iso.head()
+
+india = world[world["Country"] == "India"]
+india = india.sort_values(by = "Date")
+
+plt.figure(figsize=(30,20))
+plt.bar(x = india["Date"], height = india["New Cases"])
+plt.title("India: Number of cases by Date", fontsize = 24, fontweight = "bold")
+plt.savefig("Indiacases.png")
