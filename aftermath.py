@@ -21,11 +21,21 @@ world = world.sort_values(by="Country")
 
 # iso.head()
 
+
+# Plotting the bar plot.
 india = world[world["Country"] == "India"]
 
-india = india[india["New Cases"] > 3000]
+india = india[india["New Cases"] > 30000]
 
 plt.figure(figsize=(30, 20))
 plt.bar(x=india["Date"], height=india["New Cases"])
 plt.title("India: Number of cases by Date", fontsize=24, fontweight="bold")
 plt.savefig("Indiacases.png")
+
+plt.figure(figsize=(30, 20))
+plt.plot(india["Date"], india["New Cases"], linewidth = 16)
+plt.title("India: Number of cases by Date", fontsize=30, fontweight="bold")
+plt.savefig("Indiacases_line.png")
+
+
+usa_new = world[world["Country"] == "USA"]
