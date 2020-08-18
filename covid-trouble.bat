@@ -10,9 +10,10 @@ echo.
 
 echo                                    Running the extractor....
 
-REM "C:\Users\ghost\AppData\Local\Programs\Python\Python38\python.exe" "E:\Code dump\covid\covid-trouble\support.py"
 
 "C:\Users\ghost\AppData\Local\Programs\Python\Python38\python.exe" "E:\Code dump\covid\covid-trouble\xwala.py"
+
+"C:\Users\ghost\AppData\Local\Programs\Python\Python38\python.exe" "E:\Code dump\covid\covid-trouble\aftermath.py"
 
 echo.
 echo                                      File has executed....
