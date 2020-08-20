@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
-# sns.set()
+sns.set()
 plt.rcParams.update({'font.size': 22})
 
 print("\tCreating Plots")
@@ -18,7 +18,7 @@ india = india[india["New Cases"] > 35000]
 plt.figure(figsize=(30, 20))
 plt.bar(x=india["Date"], height=india["New Cases"])
 plt.title("India: Number of cases by Date", fontsize=24, fontweight="bold")
-plt.savefig("E:\Code dump\covid\covid-trouble\Indiacases.png")
+plt.savefig("E:\Code dump\covid\covid-trouble\plots\Indiacases.png")
 
 
 # Line plot
@@ -29,7 +29,7 @@ plt.title("India: Number of cases by Date", fontsize=30, fontweight="bold")
 plt.xlabel("Dates", fontsize = 25)
 plt.ylabel("Number of cases or recoveries", fontsize = 25)
 plt.legend(fontsize = 25)
-plt.savefig("E:\Code dump\covid\covid-trouble\Indiacases_line.png")
+plt.savefig("E:\Code dump\covid\covid-trouble\plots\Indiacases_line.png")
 
 
 usa = world[world["Country"] == "USA"]
@@ -60,6 +60,6 @@ plt.xlabel("Country", fontsize = 25)
 plt.ylabel("Number of cases", fontsize = 25)
 plt.title("Comparision Between the Top Five Countries", fontsize = 25)
 plt.legend(fontsize = 25)
-plt.savefig("E:\Code dump\covid\covid-trouble\Top_five.png")
+plt.savefig("E:\Code dump\covid\covid-trouble\plots\Top_five.png")
 
 print("\tPlots created")

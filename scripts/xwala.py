@@ -193,7 +193,7 @@ world = old.append(world, ignore_index=True)
 print("\n WORLD created.\n")
 
 print("\n Downloading World. \n")
-world.to_csv(r"E:\Code dump\covid\covid-trouble\data\world.csv", index=False)
+world.to_csv(r"E:\Code dump\covid\covid-trouble\data\world_1.csv", index=False)
 print("\n Mission Acomplished......!!!")
 
 d.quit()
