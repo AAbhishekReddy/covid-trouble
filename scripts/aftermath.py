@@ -20,6 +20,8 @@ plt.bar(x=india["Date"], height=india["New Cases"])
 plt.title("India: Number of cases by Date", fontsize=24, fontweight="bold")
 plt.savefig("E:\Code dump\covid\covid-trouble\plots\Indiacases.png")
 
+# sns.lineplot(x = "Dates", y = india["New Cases", "New Recovered"], data = india)
+
 
 # Line plot
 plt.figure(figsize=(30, 20))
