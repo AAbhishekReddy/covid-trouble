@@ -11,9 +11,9 @@ echo.
 echo                                    Running the extractor....
 
 
-"C:\Users\ghost\AppData\Local\Programs\Python\Python38\python.exe" "E:\Code dump\covid\covid-trouble\xwala.py"
+"C:\Users\ghost\AppData\Local\Programs\Python\Python38\python.exe" "E:\Code dump\covid\covid-trouble\scripts\xwala.py"
 
-"C:\Users\ghost\AppData\Local\Programs\Python\Python38\python.exe" "E:\Code dump\covid\covid-trouble\aftermath.py"
+"C:\Users\ghost\AppData\Local\Programs\Python\Python38\python.exe" "E:\Code dump\covid\covid-trouble\scripts\aftermath.py"
 
 echo.
 echo                                      File has executed....
