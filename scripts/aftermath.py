@@ -17,6 +17,7 @@ india = india[india["New Cases"] > 35000]
 # Bar plot
 plt.figure(figsize=(30, 20))
 plt.bar(x=india["Date"], height=india["New Cases"])
+plt.xticks(rotation= 45)
 plt.title("India: Number of cases by Date", fontsize=24, fontweight="bold")
 plt.savefig("E:\Code dump\covid\covid-trouble\plots\Indiacases.png")
 
@@ -31,6 +32,7 @@ plt.title("India: Number of cases by Date", fontsize=30, fontweight="bold")
 plt.xlabel("Dates", fontsize = 25)
 plt.ylabel("Number of cases or recoveries", fontsize = 25)
 plt.legend(fontsize = 25)
+plt.xticks(rotation= 45)
 plt.savefig("E:\Code dump\covid\covid-trouble\plots\Indiacases_line.png")
 
 

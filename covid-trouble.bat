@@ -33,9 +33,9 @@ cd E:\Code dump\covid\covid-trouble
 cd
 
 
-git add .
-git commit -m "%date%"
-git push origin
+@REM git add .
+@REM git commit -m "%date%"
+@REM git push origin
 
 echo                                            Git updated.
 echo.
